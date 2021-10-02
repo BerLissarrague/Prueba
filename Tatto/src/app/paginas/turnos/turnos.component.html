@@ -32,11 +32,12 @@
       </div>
       </form>
 
-      <div *ngFor="let turno of turnos" >
+
+  <div class="listaServidor" *ngFor="let turno of turnos" >
         <p>Viene {{turno.username}}</p>
         <p>El dia{{turno.fecha}}</p>
         <p>N° de turno{{turno.turno}}</p>
-        <button  id="btn2" (click)="editarTurno($event, turno)"class="btn btn-dark">Editar</button>
+       <button  id="btn2" (click)="editarTurno($event, turno)"class="btn btn-dark">Editar</button>
         <button  id="btn3" (click)="eliminarTurno($event, turno)"class="btn btn-dark">Remover</button>
       </div>
       
