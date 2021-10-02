@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TurnosService } from 'src/app/servics/turnos.service';
 import { Persona } from 'src/app/models/persona';
-import {TurnosModel} from 'src/app/models/turnos';
-import * as $ from 'jquery'; 
+import { TurnosModel } from 'src/app/models/turnos';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-turnos',
@@ -14,22 +14,26 @@ export class TurnosComponent implements OnInit {
   personaRegistrada: any;
   fechaRegistrada: any;
   constructor(private turnosService: TurnosService) { }
-  nuevoturno : Persona | undefined
-  
+  nuevoturno: Persona | undefined
+
   ngOnInit(): void {
     // Turnos cargados desde el endpoint
     this.turnosService.getTurnos().subscribe((result: any) => {
       this.turnos = result;
       this.turnos.sort(this.compararPorTurno); // Ordena por turno
       this.turnos.sort(this.compararPorFecha);//Ordena por fecha
+      localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
     });
 
     // O USMOS EL SERVICIO DE ARRIBA PARA CARGAR TURNOS O USAMOS LA LINEA DE ABAJO
-    //let listaDeTurnos = JSON.parse(localStorage.getItem("listaDeTurnos"))|| [];
-    // this.turnos = listaDeTurnos;
+    /*
+    let listaDeTurnos: any = localStorage.getItem("listaDeTurnos");
+    this.turnos = listaDeTurnos ? JSON.parse(listaDeTurnos) : [] ;
+    */
+
   }
-  
-  compararPorFecha = (a:any, b:any) => {
+
+  compararPorFecha = (a: any, b: any) => {
     if (a.fecha > b.fecha) {
       return 1;
     }
@@ -40,7 +44,7 @@ export class TurnosComponent implements OnInit {
   }
 
   // Comparar por Fecha
-  compararPorTurno = (a:any, b:any) => {
+  compararPorTurno = (a: any, b: any) => {
     if (a.turno > b.turno) {
       return 1;
     }
@@ -50,10 +54,8 @@ export class TurnosComponent implements OnInit {
     return 0;
   }
 
-  
-
   guardarTurno = (event: any) => {
-    
+
     const nombre = ($("#full_name_id")[0] as any).value;
     const edad = ($("#age_id")[0] as any).value;
     const mail = ($("#street1_id")[0] as any).value;
@@ -70,10 +72,10 @@ export class TurnosComponent implements OnInit {
 
     if (this.turnos.length > 0) {
       // Retorna cliente con turno registrado igual al actual
-      this.fechaRegistrada = this.turnos.filter((cliente:any) => cliente.fecha === fecha);
+      this.fechaRegistrada = this.turnos.filter((cliente: any) => cliente.fecha === fecha);
 
       // Retorna cliente con turno registrado igual al actual
-      this.personaRegistrada = this.fechaRegistrada.find((cliente:any) => cliente.turno === turno);
+      this.personaRegistrada = this.fechaRegistrada.find((cliente: any) => cliente.turno === turno);
 
       if (this.personaRegistrada) {
         // Si existe turno actual
@@ -85,20 +87,19 @@ export class TurnosComponent implements OnInit {
 
     if (parseInt(turno) >= 1 && parseInt(turno) <= 7) {
       let nuevoturno: TurnosModel = {
-        id: (Math.random()*10).toString(), 
+        id: (Math.random() * 10).toString(),
         username: nombre,
         edad: edad,
         email: mail,
         turno: turno,
         fecha: fecha
-      }; 
-     // (nombre,edad, mail,turno,fecha); 
-      this.agregarTurno(this.turnos, nuevoturno);
+      };
+      this.agregarTurno(nuevoturno);
       this.limpiarForm();
       event.preventDefault();
     }
   }
- 
+  // Limpia formulari al guardar
   limpiarForm = () => {
     ($("#full_name_id")[0] as any).value = "";
     ($("#age_id")[0] as any).value = "";
@@ -109,50 +110,44 @@ export class TurnosComponent implements OnInit {
 
   }
 
-  agregarTurno = (turnos: any, nuevoturno: TurnosModel) =>{
-  turnos.push(nuevoturno);
-  localStorage.setItem("listaDeTurnos", JSON.stringify(turnos));
-   
+  agregarTurno = (turnoAAgregar: TurnosModel) => {
+    this.turnos.push(turnoAAgregar);
+    localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
+
   }
-  
-  editarTurno = (turnos: any, turno:any) => {
-    let turnoActual = this.buscarTurno(this.turnos, turno);
+
+  editarTurno = (turnoAEditar: any) => {
+    let turnoActual = this.buscarTurno(turnoAEditar);
     if (turnoActual) {
-        ($("#full_name_id")[0] as any).value = turnoActual.nombre;
-        ($("#age_id")[0] as any).value  = turnoActual.edad;
-        ($("#street1_id")[0] as any).value = turnoActual.email;
-        ($("#datepicker")[0] as any ).value  = turnoActual.fecha;
-        ($("#turno_id")[0] as any).value = turnoActual.turno;
-       this.eliminarTurno(this.turnos, turnoActual.turno);
+      ($("#full_name_id")[0] as any).value = turnoActual.username;
+      ($("#age_id")[0] as any).value = turnoActual.edad;
+      ($("#street1_id")[0] as any).value = turnoActual.mail;
+      ($("#datepicker")[0] as any).value = turnoActual.fecha;
+      ($("#turno_id")[0] as any).value = turnoActual.turno;
+      // Eliminamos este turno por que es el actual a editar, y se va a agregar al momento de guardar
+      this.eliminarTurno(turnoActual.turno);
     }
   }
 
-
-   eliminarTurno = (turno: any ,turnos:number) => {
-    const index = this.turnos.findIndex((turno:any) => turno.turno === turnos);
+  eliminarTurno = (turnoAEliminar: number) => {
+    const index = this.turnos.findIndex((turno: any) => turno.turno === turnoAEliminar);
     if (index >= 0) {
       this.turnos.splice(index, 1)
-        localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
+      localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
 
     }
-}
- buscarTurno = (event: any, turno: any) => {
-  let personaEncontrado = this.turnos.find((persona: { turno: any; }) => persona.turno === turno);
-  if (!personaEncontrado) {
-      throw Error("no existe la persona");
   }
-  return personaEncontrado;
+  
+  buscarTurno = (turnoAEncontrar: any) => {
+    let personaEncontrado = this.turnos.find((turno: any) => turno === turnoAEncontrar);
+    if (!personaEncontrado) {
+      throw Error("no existe la persona");
+    }
+    return personaEncontrado;
+  }
 }
-}
-/*Calendario
-  $(function() {
-    $("#datepicker").datepicker()
-  });
+// Calendario
 
-  $("#datepicker").datepicker({
-    beforeShowDay: $.datepicker.noWeekends
-  });
-*/
 
 
 

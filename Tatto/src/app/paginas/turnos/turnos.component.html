@@ -37,8 +37,8 @@
         <p>Viene {{turno.username}}</p>
         <p>El dia{{turno.fecha}}</p>
         <p>N° de turno{{turno.turno}}</p>
-       <button  id="btn2" (click)="editarTurno($event, turno)"class="btn btn-dark">Editar</button>
-        <button  id="btn3" (click)="eliminarTurno($event, turno)"class="btn btn-dark">Remover</button>
+       <button  id="btn2" (click)="editarTurno(turno)"class="btn btn-dark">Editar</button>
+        <button  id="btn3" (click)="eliminarTurno(turno.turno)"class="btn btn-dark">Remover</button>
       </div>
       
       <table class="table " id="tabla">
