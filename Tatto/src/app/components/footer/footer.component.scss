@@ -1,0 +1,28 @@
+.footer {
+    padding: 10px;
+    width: 100%;
+    background-color: #212529;
+
+    align-self: flex-end;
+   
+    
+}
+.redes {
+    color: #ffff;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    i { 
+        color:#ffff;
+        padding: 10px;
+        font-size: 30px; }
+        span {
+            padding: 15px;
+            font-size: 20px; }
+            p {
+                padding: 15px; }
+                color: #ffff;
+}

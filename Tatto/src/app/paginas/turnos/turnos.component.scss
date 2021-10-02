@@ -1,0 +1,92 @@
+h2 { 
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2%;
+    padding: 2%;
+}
+  
+.form-container{
+    padding: 2%    
+}
+.form-groupContacto{
+    margin: auto;
+   width: 70%;
+} 
+.form-groupContacto label{
+    padding-bottom: 5px;
+}
+.form-control{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: gray;
+    margin: auto;  
+    margin-bottom: 15px;
+}
+.opciones{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color:#212529;
+}
+.suscribirse-checkbox{
+    padding-bottom: 5px;
+}
+.btn-contacto {
+    text-align: center;
+    .buttom{
+        padding: 1%;
+    }
+}
+#tabla{
+    width: 80%;
+    margin: 0 auto;
+    
+}
+td {
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+    align-items: center;
+    position: relative;
+}
+#editarRemover{
+    text-align: center;
+   
+}
+#hora{ 
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+ul{ 
+    margin: 7%
+
+}
+.liturnos{
+    padding :1%;
+}
+.btnedit{
+    margin:  1%;
+}
+.btnremover{ 
+    margin-left: 1%;
+
+}
+.listaServidor{
+    text-align: center;
+    padding: 1%;
+    font-size: 20px;
+    span {
+        padding: 4px;
+    }
+    p{
+        text-align: center;
+    }
+    
+}
+#btn2, #btn3{
+    margin:1%;
+
+}
