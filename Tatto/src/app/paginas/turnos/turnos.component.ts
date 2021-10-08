@@ -16,6 +16,7 @@ export class TurnosComponent implements OnInit {
   constructor(private turnosService: TurnosService) { }
   nuevoturno: Persona | undefined
 
+
   ngOnInit(): void {
     // Turnos cargados desde el endpoint
     this.turnosService.getTurnos().subscribe((result: any) => {
@@ -24,6 +25,7 @@ export class TurnosComponent implements OnInit {
       this.turnos.sort(this.compararPorFecha);//Ordena por fecha
       localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
     });
+
 
     // O USMOS EL SERVICIO DE ARRIBA PARA CARGAR TURNOS O USAMOS LA LINEA DE ABAJO
     /*
@@ -43,7 +45,7 @@ export class TurnosComponent implements OnInit {
     return 0;
   }
 
-  // Comparar por Fecha
+  // Comparar por Turno
   compararPorTurno = (a: any, b: any) => {
     if (a.turno > b.turno) {
       return 1;
@@ -88,21 +90,24 @@ export class TurnosComponent implements OnInit {
     if (parseInt(turno) >= 1 && parseInt(turno) <= 7) {
       let nuevoturno: TurnosModel = {
         id: (Math.random() * 10).toString(),
-        username: nombre,
+        full_name: nombre,
         edad: edad,
         email: mail,
         turno: turno,
         fecha: fecha
       };
       this.agregarTurno(nuevoturno);
+      this.turnos.sort(this.compararPorTurno); // Ordena por turno
+      this.turnos.sort(this.compararPorFecha);//Ordena por fecha
       this.limpiarForm();
-      event.preventDefault();
+      localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
+      // event.preventDefault();
+
     }
   }
   // Limpia formulari al guardar
   limpiarForm = () => {
     ($("#full_name_id")[0] as any).value = "";
-    ($("#age_id")[0] as any).value = "";
     ($("#age_id")[0] as any).value = "";
     ($("#street1_id")[0] as any).value = "";
     ($("#datepicker")[0] as any).value = "";
@@ -119,7 +124,7 @@ export class TurnosComponent implements OnInit {
   editarTurno = (turnoAEditar: any) => {
     let turnoActual = this.buscarTurno(turnoAEditar);
     if (turnoActual) {
-      ($("#full_name_id")[0] as any).value = turnoActual.username;
+      ($("#full_name_id")[0] as any).value = turnoActual.full_name;
       ($("#age_id")[0] as any).value = turnoActual.edad;
       ($("#street1_id")[0] as any).value = turnoActual.mail;
       ($("#datepicker")[0] as any).value = turnoActual.fecha;
@@ -137,7 +142,7 @@ export class TurnosComponent implements OnInit {
 
     }
   }
-  
+
   buscarTurno = (turnoAEncontrar: any) => {
     let personaEncontrado = this.turnos.find((turno: any) => turno === turnoAEncontrar);
     if (!personaEncontrado) {
@@ -145,11 +150,5 @@ export class TurnosComponent implements OnInit {
     }
     return personaEncontrado;
   }
+
 }
-// Calendario
-
-
-
-
-
-

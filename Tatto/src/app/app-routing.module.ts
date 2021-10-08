@@ -7,6 +7,7 @@ import { TurnosComponent } from './paginas/turnos/turnos.component';
 import { HeaderComponent } from './components/header/header.component';
 
 
+
 const routes: Routes = [ 
   { path: 'home', component: HomeComponent},
   { path: 'header', component: HeaderComponent},

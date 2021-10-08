@@ -9,15 +9,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TurnosService {
-  
+
   constructor(
     private http: HttpClient
-    ) { };
-    getTurnos(): Observable < TurnosModel [] > {
-      return this.http.get('http://localhost:3000/users')
+  ) { };
+  getTurnos(): Observable<TurnosModel[]> {
+    return this.http.get('http://localhost:3000/users')
       .pipe(
-        map((response: any ) => response)
+        map((response: any) => response)
       )
-    }
+  }
 }
 

@@ -1,8 +1,8 @@
-export interface TurnosModel{
-    id: string;
-    username: string;
-    email : string;
-    edad : number;
-    turno :number;
-    fecha : number;
+export interface TurnosModel {
+    id: String;
+    full_name: String;
+    email: String;
+    edad: number;
+    turno: number;
+    fecha: Date;
 }

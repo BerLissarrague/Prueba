@@ -1,18 +1,15 @@
 h2 { 
-    width: 100%;
+    width: 90%;
     text-align: center;
     text-transform: uppercase;
-    margin: 2%;
-    padding: 2%;
+    margin: 4% auto 2% auto;
+    font-size: 3rem;    
 }
-  
+
 .form-container{
     padding: 2%    
 }
-.form-groupContacto{
-    margin: auto;
-   width: 70%;
-} 
+
 .form-groupContacto label{
     padding-bottom: 5px;
 }
@@ -20,19 +17,22 @@ h2 {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: gray;
+    color: rgb(41, 40, 40);
     margin: auto;  
     margin-bottom: 15px;
 }
+
 .opciones{
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 400;
     line-height: 1.5;
     color:#212529;
 }
+
 .suscribirse-checkbox{
     padding-bottom: 5px;
 }
+
 .btn-contacto {
     text-align: center;
     .buttom{
@@ -42,6 +42,7 @@ h2 {
 #tabla{ 
     width: 80%;
     margin: 0 auto;
+    font-size: 1rem;
     
 }
 td {
@@ -53,40 +54,47 @@ td {
 }
 #editarRemover{
     text-align: center;
-   
 }
 #hora{ 
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+   text-align: center;
 }
 ul{ 
     margin: 7%
-
 }
+
 .liturnos{
     padding :1%;
 }
+
 .btnedit{
     margin:  1%;
 }
+
 .btnremover{ 
     margin-left: 1%;
-
 }
+
 .listaServidor{
     text-align: center;
     padding: 1%;
     font-size: 20px;
-    span {
-        padding: 4px;
-    }
-    p{
-        text-align: center;
-    }
-    
+    margin: 2%;      
 }
 #btn2, #btn3{
     margin:1%;
+}
+/* Medias Query*/
+@media only screen and (max-width: 600px){
+    h2{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 1rem;
+    }
+    .listaServidor{
+        font-size: 14px;
+        margin: 0 auto;
+        width: 80%;
+    }
 
 }

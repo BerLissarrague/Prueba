@@ -9,7 +9,12 @@ import { TurnosComponent } from './paginas/turnos/turnos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DatePickerModule } from 'date-picker-directive';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,21 @@ import { HttpClientModule } from '@angular/common/http';
     TrabajosEchosComponent,
     TurnosComponent,
     FooterComponent,
-    HeaderComponent
-  
+    HeaderComponent,
   ],
+
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
+    DatePickerModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
