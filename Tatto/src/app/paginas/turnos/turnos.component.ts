@@ -17,6 +17,7 @@ export class TurnosComponent implements OnInit {
   nuevoturno: Persona | undefined
 
 
+  showMe: boolean = false;
   ngOnInit(): void {
     // Turnos cargados desde el endpoint
     this.turnosService.getTurnos().subscribe((result: any) => {
@@ -101,9 +102,11 @@ export class TurnosComponent implements OnInit {
       this.turnos.sort(this.compararPorFecha);//Ordena por fecha
       this.limpiarForm();
       localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
-      // event.preventDefault();
+       event.preventDefault();
 
-    }
+       
+      }
+      ($(".listaServidor").slideUp(3000))
   }
   // Limpia formulari al guardar
   limpiarForm = () => {
@@ -132,6 +135,7 @@ export class TurnosComponent implements OnInit {
       // Eliminamos este turno por que es el actual a editar, y se va a agregar al momento de guardar
       this.eliminarTurno(turnoActual.turno);
     }
+    ($(".listaServidor").slideDown(3000))
   }
 
   eliminarTurno = (turnoAEliminar: number) => {
@@ -139,8 +143,8 @@ export class TurnosComponent implements OnInit {
     if (index >= 0) {
       this.turnos.splice(index, 1)
       localStorage.setItem("listaDeTurnos", JSON.stringify(this.turnos));
-
     }
+    ($(".listaServidor").slideDown(3000))
   }
 
   buscarTurno = (turnoAEncontrar: any) => {

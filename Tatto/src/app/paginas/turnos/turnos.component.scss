@@ -7,7 +7,9 @@ h2 {
 }
 
 .form-container{
-    padding: 2%    
+    padding: 2%;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .form-groupContacto label{
@@ -40,7 +42,7 @@ h2 {
     }
 }
 #tabla{ 
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
     font-size: 1rem;
     
@@ -64,7 +66,9 @@ ul{
 
 .liturnos{
     padding :1%;
+  
 }
+
 
 .btnedit{
     margin:  1%;
@@ -75,10 +79,16 @@ ul{
 }
 
 .listaServidor{
+    display: flex;
+    flex-direction: row;
     text-align: center;
     padding: 1%;
     font-size: 20px;
-    margin: 2%;      
+    align-items: center;
+    justify-content: center;
+    p{
+        margin-bottom:0 ;
+    }      
 }
 #btn2, #btn3{
     margin:1%;
