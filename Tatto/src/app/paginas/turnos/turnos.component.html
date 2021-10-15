@@ -1,5 +1,5 @@
 <h2>Saca tu turno</h2>
-<div id='galeria'></div>
+
 <form class="form-container" id="formulario">
   <div class="form-group form-groupContacto">
     <label for="full_name_id" class="control-label">Nombre</label>
@@ -11,17 +11,14 @@
     <input type="text" class="form-control" id="street1_id" name="street1" placeholder="E-mail" autocomplete="off"
       required>
   </div>
-
   <div class="form-group form-groupContacto">
     <label for="city_id" class="control-label">Edad</label>
     <input type="number" class="form-control" id="age_id" name="age" placeholder="Edad" autocomplete="off" required>
   </div>
-
   <div class="form-group form-groupContacto">
     <label for="street2_id" class="control-label">Turno</label>
     <input type="number" class="form-control" min=1| max=7 id="turno_id" name="age" placeholder="Turno"
       autocomplete="off" required>
-
   </div>
   <div class="form-group form-groupContacto">
     <label for="street2_id" class="control-label">Fecha</label>
@@ -31,11 +28,13 @@
     <button type="submit" id="btn1" (click)="guardarTurno($event)" class="btn btn-dark">Guardar</button>
   </div>
 </form>
+
 <div class="listaServidor" *ngFor="let turno of turnos">
   <p> Viene {{ turno.full_name }}, el dia {{ turno.fecha }}. N° de turno {{ turno.turno }}</p>
   <button id="btn2" (click)="editarTurno(turno)" class="btn btn-dark">Editar</button>
   <button id="btn3" (click)="eliminarTurno(turno.turno)" class="btn btn-dark">Remover</button>
 </div>
+
 <table class="table " id="tabla">
   <thead>
     <tr>
@@ -47,16 +46,13 @@
     <tr id="tturno1">
       <th scope="row">Turno 1</th>
       <td>8 a 9:30 Am </td>
-
     <tr id="tturno2">
       <th scope="row">Turno 2</th>
       <td>9:30 a 11:00 Am</td>
-
     </tr>
     <tr id="tturno3">
       <th scope="row">Turno 3</th>
       <td>11:00 Am a 12:30 Pm</td>
-
     </tr>
     <tr id="tturno4">
       <th scope="row">Turno 4</th>

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './paginas/home/home.component';
 import { DescripcionDeServiciosComponent } from './components/descripcion-de-servicios/descripcion-de-servicios.component';
-import { TrabajosEchosComponent } from './components/trabajos-echos/trabajos-echos.component';
+import { TrabajosHechosComponent } from './components/trabajos-hechos/trabajos-hechos.component';
 import { TurnosComponent } from './paginas/turnos/turnos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,7 +21,7 @@ import { DatePickerModule } from 'date-picker-directive';
     AppComponent,
     HomeComponent,
     DescripcionDeServiciosComponent,
-    TrabajosEchosComponent,
+    TrabajosHechosComponent,
     TurnosComponent,
     FooterComponent,
     HeaderComponent,

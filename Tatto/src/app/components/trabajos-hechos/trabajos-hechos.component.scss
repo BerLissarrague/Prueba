@@ -7,11 +7,10 @@ h2 {
 }
 .carousel {
     margin: 0 auto;
-    width: 80%;
- 
-img{
+    width: 100%; 
+    img{
     width: 40%;
-}
+    }
 }
   
 .d-block {
@@ -28,8 +27,6 @@ img{
         font-size: 1rem;
     }
     .carousel{
-        
         width: 80%;
     }
-
 }

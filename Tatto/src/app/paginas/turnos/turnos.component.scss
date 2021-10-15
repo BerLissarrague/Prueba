@@ -15,6 +15,7 @@ h2 {
 .form-groupContacto label{
     padding-bottom: 5px;
 }
+
 .form-control{
     font-size: 1rem;
     font-weight: 400;
@@ -41,11 +42,11 @@ h2 {
         padding: 1%;
     }
 }
+
 #tabla{ 
     width: 75%;
-    margin: 0 auto;
-    font-size: 1rem;
-    
+    margin: 30px auto 0 auto;
+    font-size: 1rem;    
 }
 td {
     text-align: center;
@@ -54,21 +55,21 @@ td {
     align-items: center;
     position: relative;
 }
+
 #editarRemover{
     text-align: center;
 }
 #hora{ 
    text-align: center;
 }
+
 ul{ 
     margin: 7%
 }
 
 .liturnos{
     padding :1%;
-  
 }
-
 
 .btnedit{
     margin:  1%;
@@ -82,7 +83,6 @@ ul{
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding: 1%;
     font-size: 20px;
     align-items: center;
     justify-content: center;
@@ -90,6 +90,7 @@ ul{
         margin-bottom:0 ;
     }      
 }
+
 #btn2, #btn3{
     margin:1%;
 }
